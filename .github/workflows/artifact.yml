@@ -21,6 +21,8 @@ jobs:
   
   download:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - name: Download file
       uses: actions/download-artifact@v3
