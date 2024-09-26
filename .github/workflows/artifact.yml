@@ -18,14 +18,6 @@ jobs:
       with:
         name: hello-artifact
         path: hello.txt
-
-    - name: Commit new file
-      run: |
-        git config --local user.name "GitHub Actions"
-        git config --local user.email "actions@github.com"
-        git add hello.txt
-        git commit -m "Add hello.txt"
-        git push
   
   download:
     runs-on: ubuntu-latest
@@ -33,6 +25,9 @@ jobs:
     permissions:
       contents: write
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
     - name: Download file
       uses: actions/download-artifact@v3
       with:
@@ -41,3 +36,11 @@ jobs:
 
     - name: Display content
       run: cat ./artifacts/hello.txt
+      
+    - name: Commit new file
+      run: |
+        git config --local user.name "GitHub Actions"
+        git config --local user.email "actions@github.com"
+        git add hello.txt
+        git commit -m "Add hello.txt"
+        git push
