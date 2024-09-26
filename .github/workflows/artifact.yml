@@ -28,13 +28,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Download file
+    - name: Download text file
       uses: actions/download-artifact@v3
       with:
         name: hello-artifact
         path: ./artifacts
 
-    - name: Display content
+    - name: Display content of the text file
       run: cat ./artifacts/hello.txt
 
     - name: Commit new file
